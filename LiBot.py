@@ -7,20 +7,34 @@ import random
 
 bot = telebot.TeleBot(config.token)
 obz = ['либерахи', 'социал-демократы', 'пропутинцы', 'пидарахи', 'жители прекрассной рассеюшки', 'патриоты', 'политэксперты', 'политологи', 'дети Соловьёва', 'фанаты Киселёва', 'любители боярки']
-a = random.randint(0,len(obz)-1)
 
 @bot.message_handler(commands=['start'])
 def repeat_all_messages(message): # Название функции не играет никакой роли, в принципе
-	destiny = "14:27"
-	bot.send_message(message.chat.id, "Заебок, теперь, когда будет: " + destiny + " я напишу хуйню в чат, больше не хуярьте мне команды пока")
+	utro = "07:00"
+	den = "14:00"
+	vecher = "20:00"
+	noch = "02:00"
+	bot.send_message(message.chat.id, "Started in: " + utro + ", " + den + ", " + vecher + ", " + noch + ", ")
 	while 1:
+		a = random.randint(0,len(obz)-1)
 		now = datetime.strftime(datetime.now(), "%H:%M")
-		if now == destiny:
-			bot.send_message(message.chat.id, "Доброе утро, "+obz[a])
+		if now == utro:
+			bot.send_message(message.chat.id, "Доброе утро, " + obz[a])
+			time.sleep(60)
+			continue
+		elif now == den:
+			bot.send_message(message.chat.id, "Ну что, " + obz[a] + ", как ваш день проходит?")
+			time.sleep(60)
+			continue
+		elif now == vecher:
+			bot.send_message(message.chat.id, "Вечер в хату, " + obz[a] + ", сегодня без котлет, хорошего вечера!")
+			time.sleep(60)
+			continue
+		elif now == noch:
+			bot.send_message(message.chat.id, "Эй, " + obz[a] + ", спите? А пыня с госдурой новые законы придумывают, пока вы отдыхаете")
 			time.sleep(60)
 			continue
 		else:
-			bot.send_message(message.chat.id, "Пока не время")
 			time.sleep(60)
 			continue
 		
