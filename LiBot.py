@@ -12,9 +12,10 @@ obz = ['либерахи', 'социал-демократы', 'пропутин�
 def repeat_all_messages(message): # Название функции не играет никакой роли, в принципе
 	utro = "07:00"
 	den = "14:00"
+	rabden = "16:40"
 	vecher = "20:00"
 	noch = "02:00"
-	bot.send_message(message.chat.id, "Started in: " + utro + ", " + den + ", " + vecher + ", " + noch + ", ")
+	bot.send_message(message.chat.id, "Started in: " + utro + ", " + den + ", " + vecher + ", " + rabden + ", " + noch + ", ")
 	while 1:
 		a = random.randint(0,len(obz)-1)
 		now = datetime.strftime(datetime.now(), "%H:%M")
@@ -24,6 +25,10 @@ def repeat_all_messages(message): # Название функции не игр�
 			continue
 		elif now == den:
 			bot.send_message(message.chat.id, "Ну что, " + obz[a] + ", как ваш день проходит?")
+			time.sleep(60)
+			continue
+		elif now == rabden:
+			bot.send_message("Эй, "+ obz[a] +", как там пробочки? Чекните https://yandex.ru/maps/51/samara/probki чтоб знать, гордиться страной или нет?")
 			time.sleep(60)
 			continue
 		elif now == vecher:
